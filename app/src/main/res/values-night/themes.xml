@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="Theme.Base.Night" parent="Theme.Base">
+
+        <!-- System UI -->
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+    </style>
+
+    <style name="AppTheme" parent="Theme.Base.Night" />
+
+</resources>
