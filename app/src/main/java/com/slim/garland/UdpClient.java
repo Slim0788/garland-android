@@ -1,5 +1,7 @@
 package com.slim.garland;
 
+import com.slim.garland.ui.MainActivity;
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;

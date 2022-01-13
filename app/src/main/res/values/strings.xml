@@ -18,4 +18,11 @@
     <string name="device_scanner_bluetooth_switch_on_denied_dialog_message">Bluetooth was not turned on, this app cannot scan for Bluetooth LE devices.</string>
 
 
+    <!--  WIFI SCANNING FRAGMENT  -->
+    <string name="wifi_scanning_title">Wi-Fi scanning</string>
+    <string name="wifi_scanning_location_permission_dialog_title">Location permission required</string>
+    <string name="wifi_scanning_location_permission_dialog_message">This app does not use location information, but scanning for Wi-Fi requires this permission.\n\nThe scan result can contain location information, so Google decided that starting with Android 6.0 apps have to request permission.</string>
+    <string name="wifi_scanning_location_permission_denied_dialog_title">Functionality limited</string>
+    <string name="wifi_scanning_location_permission_denied_dialog_message">As location permission has not been granted, this app cannot scan for Wi-Fi.</string>
+
 </resources>

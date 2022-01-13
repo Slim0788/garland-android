@@ -24,7 +24,7 @@ private val SCAN_PERIOD_IN_MILLIS = TimeUnit.SECONDS.toMillis(30)
 
 class DeviceScannerViewModel(
     application: Application,
-    private val bluetoothAdapter: BluetoothAdapter
+    private val bluetoothAdapter: BluetoothAdapter?
 ) : AndroidViewModel(application) {
 
     @SuppressLint("StaticFieldLeak")
@@ -46,8 +46,8 @@ class DeviceScannerViewModel(
     private val _scanProgress = MutableLiveData(false)
     val scanProgress: LiveData<Boolean> = _scanProgress
 
-    private val bluetoothLeScanner: BluetoothLeScanner by lazy {
-        bluetoothAdapter.bluetoothLeScanner
+    private val bluetoothLeScanner: BluetoothLeScanner? by lazy {
+        bluetoothAdapter?.bluetoothLeScanner
     }
 
     private val foundDevices = HashMap<String, BluetoothDevice>()
@@ -95,9 +95,8 @@ class DeviceScannerViewModel(
             return
         }
         _scanProgress.value = true
-        handler.removeCallbacksAndMessages(null)
         handler.postDelayed({ stopScanning() }, SCAN_PERIOD_IN_MILLIS)
-        bluetoothLeScanner.startScan(buildScanFilters(), buildScanSettings(), scanCallback)
+        bluetoothLeScanner?.startScan(buildScanFilters(), buildScanSettings(), scanCallback)
 
         setDevicesToListTimer.start()
     }
@@ -113,7 +112,7 @@ class DeviceScannerViewModel(
         ) {
             return
         }
-        bluetoothLeScanner.stopScan(scanCallback)
+        bluetoothLeScanner?.stopScan(scanCallback)
         scanCallback = null
 
         setDevicesToListTimer.cancel()

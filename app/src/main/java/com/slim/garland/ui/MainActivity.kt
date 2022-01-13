@@ -1,7 +1,8 @@
-package com.slim.garland
+package com.slim.garland.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.slim.garland.R
 import com.slim.garland.ui.connection.scanner.DeviceScannerFragment
 
 // https://habr.com/ru/post/406559/     Часть 1

@@ -1,14 +1,15 @@
-package com.slim.garland.ui.connection.control
+package com.slim.garland.ui.connection.wifi
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.slim.garland.App
 import com.slim.garland.dependency.Dependencies
 
-class DeviceControlViewModelFactory(private val deviceAddress: String) : ViewModelProvider.Factory {
+class WiFiScanningViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(DeviceControlViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(WiFiScanningViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return DeviceControlViewModel(Dependencies.bleControlManager, deviceAddress) as T
+            return WiFiScanningViewModel(App.instance, Dependencies.wifiManager) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

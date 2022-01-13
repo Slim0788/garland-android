@@ -31,7 +31,7 @@ import com.slim.garland.utils.requestPermissionLauncher
 class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
 
     private val viewModel: DeviceScannerViewModel by viewModels {
-        DeviceScannerViewModelFactory(requireActivity().application)
+        DeviceScannerViewModelFactory()
     }
 
     private var _binding: FragmentDeviceScannerBinding? = null
@@ -108,7 +108,7 @@ class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
             }
             scannerWarning.observe(viewLifecycleOwner) {
                 Snackbar.make(binding.root, it, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, null)
+                    .setAction(android.R.string.ok) {}
                     .show()
             }
             startScanFlag.observe(viewLifecycleOwner) {
@@ -121,7 +121,7 @@ class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
                 if (it) {
                     binding.progress.show()
                     binding.btnStopScanning.visibility = View.VISIBLE
-                }else {
+                } else {
                     binding.progress.hide()
                     binding.btnStopScanning.visibility = View.GONE
                 }
@@ -195,18 +195,10 @@ class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
     }
 
     private fun checkPermissions() {
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) {
+            Toast.makeText(requireContext(), Build.VERSION.SDK_INT.toString(), Toast.LENGTH_LONG).show()
             if (ContextCompat.checkSelfPermission(
-                    requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                showBluetoothLocationPermissionMessage()
-            } else {
-                activateBluetooth()
-            }
-        } else if (Build.VERSION.SDK_INT in Build.VERSION_CODES.Q..Build.VERSION_CODES.R) {
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
+                    requireContext(), Manifest.permission.ACCESS_FINE_LOCATION //or Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 showBluetoothLocationPermissionMessage()
@@ -252,15 +244,15 @@ class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
 
     private fun getListPermissions(): Array<String> {
         return when {
-            Build.VERSION.SDK_INT in Build.VERSION_CODES.N..Build.VERSION_CODES.P -> arrayOf(
+            Build.VERSION.SDK_INT <= Build.VERSION_CODES.R -> arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION
-            )
-            Build.VERSION.SDK_INT in Build.VERSION_CODES.Q..Build.VERSION_CODES.R -> arrayOf(
-                Manifest.permission.ACCESS_FINE_LOCATION
             )
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> arrayOf(
                 Manifest.permission.BLUETOOTH_SCAN,
-                Manifest.permission.BLUETOOTH_CONNECT
+                Manifest.permission.BLUETOOTH_CONNECT,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
             )
             else -> arrayOf()
         }
