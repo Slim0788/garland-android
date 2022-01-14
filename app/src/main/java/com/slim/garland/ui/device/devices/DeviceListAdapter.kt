@@ -1,25 +1,23 @@
 package com.slim.garland.ui.device.devices
 
 import android.annotation.SuppressLint
-import android.net.wifi.ScanResult
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.slim.garland.databinding.FragmentWifiScanningItemBinding
+import com.slim.garland.databinding.FragmentDeviceListItemBinding
 
 class DeviceListAdapter : RecyclerView.Adapter<DeviceListAdapter.ViewHolder>() {
 
-    private val items = mutableListOf<ScanResult>()
+    private val items = mutableListOf<DeviceEntity>()
 
-    private var onItemClickListener: ((item: ScanResult) -> Unit)? = null
+    private var onItemClickListener: ((item: DeviceEntity) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (item: ScanResult) -> Unit) {
+    fun setOnItemClickListener(listener: (item: DeviceEntity) -> Unit) {
         onItemClickListener = listener
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setItems(items: List<ScanResult>) {
+    fun setItems(items: List<DeviceEntity>) {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
@@ -27,7 +25,7 @@ class DeviceListAdapter : RecyclerView.Adapter<DeviceListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
-            FragmentWifiScanningItemBinding
+            FragmentDeviceListItemBinding
                 .inflate(LayoutInflater.from(parent.context), parent, false)
         ).apply {
             itemView.setOnClickListener {
@@ -44,18 +42,12 @@ class DeviceListAdapter : RecyclerView.Adapter<DeviceListAdapter.ViewHolder>() {
     override fun getItemCount() = items.size
 
     inner class ViewHolder(
-        private val binding: FragmentWifiScanningItemBinding
+        private val binding: FragmentDeviceListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind() {
             val item = items[adapterPosition]
             binding.apply {
-                textSsid.text = item.SSID
-//                imageLevel.text = item.level
-                imageSecurity.visibility = if (
-                    item.capabilities.contains("[WPA")
-                    || item.capabilities.contains("[WEP")
-                ) View.VISIBLE else View.INVISIBLE
-                item.isPasspointNetwork
+                textName.text = item.name
             }
         }
     }

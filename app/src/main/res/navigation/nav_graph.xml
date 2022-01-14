@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/deviceListFragment">
+
+    <include app:graph="@navigation/nav_connection" />
+    <include app:graph="@navigation/nav_control" />
+
+    <fragment
+        android:id="@+id/deviceListFragment"
+        android:name="com.slim.garland.ui.device.devices.DeviceListFragment"
+        android:label="DeviceListFragment"
+        tools:layout="@layout/fragment_device_list">
+
+        <action
+            android:id="@+id/action_deviceListFragment_to_nav_connection"
+            app:destination="@id/nav_connection" />
+
+        <action
+            android:id="@+id/action_deviceListFragment_to_nav_control"
+            app:destination="@id/nav_control" />
+    </fragment>
+
+</navigation>

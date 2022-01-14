@@ -90,9 +90,13 @@ class WiFiScanningViewModel(
             }
             linkedMap[result.SSID] = result
         }
-        scanResults.clear()
-        scanResults.addAll(linkedMap.values)
         return scanResults
+            .apply {
+                clear()
+                addAll(linkedMap.values)
+            }
+            .sortedBy { it.level }
+            .reversed()
     }
 
     override fun onCleared() {

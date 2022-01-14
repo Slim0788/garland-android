@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_connection"
+    app:startDestination="@id/connectionMethodFragment">
+
+    <fragment
+        android:id="@+id/wiFiScanningFragment"
+        android:name="com.slim.garland.ui.connection.wifi.WiFiScanningFragment"
+        android:label="WiFiScanningFragment"
+        tools:layout="@layout/fragment_wifi_scanning" />
+
+    <fragment
+        android:id="@+id/connectionMethodFragment"
+        android:name="com.slim.garland.ui.connection.method.ConnectionMethodFragment"
+        android:label="fragment_connection_method"
+        tools:layout="@layout/fragment_connection_method">
+        <action
+            android:id="@+id/action_connectionMethodFragment_to_deviceScannerFragment"
+            app:destination="@id/deviceScannerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/deviceControlFragment"
+        android:name="com.slim.garland.ui.connection.control.DeviceControlFragment"
+        android:label="fragment_device_control"
+        tools:layout="@layout/fragment_device_control">
+        <action
+            android:id="@+id/action_deviceControlFragment_to_wiFiPasswordFragment"
+            app:destination="@id/wiFiPasswordFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/wiFiPasswordFragment"
+        android:name="com.slim.garland.ui.connection.password.WiFiPasswordFragment"
+        android:label="fragment_wifi_password"
+        tools:layout="@layout/fragment_wifi_password">
+        <action
+            android:id="@+id/action_wiFiPasswordFragment_to_wiFiScanningFragment"
+            app:destination="@id/wiFiScanningFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/deviceScannerFragment"
+        android:name="com.slim.garland.ui.connection.scanner.DeviceScannerFragment"
+        android:label="fragment_wifi_password"
+        tools:layout="@layout/fragment_device_scanner">
+        <action
+            android:id="@+id/action_deviceScannerFragment_to_deviceControlFragment"
+            app:destination="@id/deviceControlFragment" />
+    </fragment>
+
+</navigation>

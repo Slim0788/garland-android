@@ -138,6 +138,9 @@ class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
                 .commit()
         }
         binding.apply {
+            toolbar.setNavigationOnClickListener {
+                parentFragmentManager.popBackStack()
+            }
             swipeRefresh.setOnRefreshListener {
                 swipeRefresh.isRefreshing = false
                 startScan()
@@ -196,9 +199,11 @@ class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
 
     private fun checkPermissions() {
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) {
-            Toast.makeText(requireContext(), Build.VERSION.SDK_INT.toString(), Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), Build.VERSION.SDK_INT.toString(), Toast.LENGTH_LONG)
+                .show()
             if (ContextCompat.checkSelfPermission(
-                    requireContext(), Manifest.permission.ACCESS_FINE_LOCATION //or Manifest.permission.ACCESS_COARSE_LOCATION
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION //or Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 showBluetoothLocationPermissionMessage()
@@ -251,8 +256,8 @@ class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> arrayOf(
                 Manifest.permission.BLUETOOTH_SCAN,
                 Manifest.permission.BLUETOOTH_CONNECT,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
+//                Manifest.permission.ACCESS_FINE_LOCATION,
+//                Manifest.permission.ACCESS_COARSE_LOCATION
             )
             else -> arrayOf()
         }

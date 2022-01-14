@@ -62,14 +62,13 @@ class WiFiScanningAdapter : RecyclerView.Adapter<WiFiScanningAdapter.ViewHolder>
         }
 
         @DrawableRes
-        private fun getLevelIcon(level: Int): Int {
-            return when(level) {
-                in -63..-54 -> R.drawable.ic_24_wifi_level_4
-                in -73..-64 -> R.drawable.ic_24_wifi_level_3
-                in -83..-74 -> R.drawable.ic_24_wifi_level_2
-                in -93..-84 -> R.drawable.ic_24_wifi_level_1
-                else -> R.drawable.ic_24_wifi_level_0
-            }
+        private fun getLevelIcon(level: Int) = when (level) {
+            in -63..-1 -> R.drawable.ic_24_wifi_level_4
+            in -73..-64 -> R.drawable.ic_24_wifi_level_3
+            in -83..-74 -> R.drawable.ic_24_wifi_level_2
+            in -93..-84 -> R.drawable.ic_24_wifi_level_1
+            else -> R.drawable.ic_24_wifi_level_0
         }
     }
 }
+
