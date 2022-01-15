@@ -1,6 +1,6 @@
 package com.slim.garland.data
 
-import com.slim.garland.ui.device.devices.DeviceEntity
+import com.slim.garland.ui.manager.DeviceEntity
 
 object SavedDevices {
 

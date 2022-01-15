@@ -6,21 +6,25 @@
     app:startDestination="@+id/deviceListFragment">
 
     <include app:graph="@navigation/nav_connection" />
-    <include app:graph="@navigation/nav_control" />
 
     <fragment
         android:id="@+id/deviceListFragment"
-        android:name="com.slim.garland.ui.device.devices.DeviceListFragment"
-        android:label="DeviceListFragment"
+        android:name="com.slim.garland.ui.manager.DeviceListFragment"
+        android:label="Devices"
         tools:layout="@layout/fragment_device_list">
-
         <action
             android:id="@+id/action_deviceListFragment_to_nav_connection"
             app:destination="@id/nav_connection" />
 
         <action
-            android:id="@+id/action_deviceListFragment_to_nav_control"
-            app:destination="@id/nav_control" />
+            android:id="@+id/action_deviceListFragment_to_deviceFragment"
+            app:destination="@id/deviceFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/deviceFragment"
+        android:name="com.slim.garland.ui.device.DeviceFragment"
+        tools:layout="@layout/fragment_device"
+        android:label="DeviceFragment" />
 
 </navigation>

@@ -1,16 +1,15 @@
-package com.slim.garland.ui.device.devices
+package com.slim.garland.ui.manager
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentDeviceListBinding
-import com.slim.garland.ui.connection.method.ConnectionMethodFragment
-import com.slim.garland.ui.connection.scanner.DeviceScannerFragment
 
 class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
 
@@ -20,10 +19,6 @@ class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
     private val binding get() = _binding!!
 
     private val deviceListAdapter = DeviceListAdapter()
-
-    companion object {
-        fun newInstance() = DeviceListFragment()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView(view)
@@ -63,14 +58,11 @@ class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
 
     private fun setListeners() {
         binding.apply {
-            toolbar.setNavigationOnClickListener {
-                parentFragmentManager.popBackStack()
-            }
             btnAddMore.setOnClickListener {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, ConnectionMethodFragment.newInstance())
-                    .addToBackStack(null)
-                    .commit()
+                findNavController().navigate(R.id.action_deviceListFragment_to_nav_connection)
+            }
+            deviceListAdapter.setOnItemClickListener {
+                findNavController().navigate(R.id.action_deviceListFragment_to_deviceFragment)
             }
         }
     }

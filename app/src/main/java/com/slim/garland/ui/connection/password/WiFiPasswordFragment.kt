@@ -55,10 +55,10 @@ class WiFiPasswordFragment : Fragment(R.layout.fragment_wifi_password) {
                 parentFragmentManager.popBackStack()
             }
             btnAnotherWifi.setOnClickListener {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, WiFiScanningFragment.newInstance())
-                    .addToBackStack(null)
-                    .commit()
+//                parentFragmentManager.beginTransaction()
+//                    .replace(R.id.container, WiFiScanningFragment.newInstance())
+//                    .addToBackStack(null)
+//                    .commit()
             }
             btnWifiSettings.setOnClickListener {
                 startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))

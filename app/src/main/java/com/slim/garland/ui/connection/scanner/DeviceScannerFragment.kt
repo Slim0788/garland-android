@@ -132,10 +132,10 @@ class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
     private fun setListeners() {
         deviceScanAdapter.setOnItemClickListener {
             viewModel.stopScanning()
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, DeviceControlFragment.newInstance(it.address))
-                .addToBackStack(null)
-                .commit()
+//            parentFragmentManager.beginTransaction()
+//                .replace(R.id.container, DeviceControlFragment.newInstance(it.address))
+//                .addToBackStack(null)
+//                .commit()
         }
         binding.apply {
             toolbar.setNavigationOnClickListener {

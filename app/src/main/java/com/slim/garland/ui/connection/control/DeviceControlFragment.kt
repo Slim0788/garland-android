@@ -89,10 +89,10 @@ class DeviceControlFragment : Fragment(R.layout.fragment_device_control) {
                 viewModel.sendCredentialsRequest()
             }
             btnWifiPassword.setOnClickListener {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, WiFiPasswordFragment.newInstance())
-                    .addToBackStack(null)
-                    .commit()
+//                parentFragmentManager.beginTransaction()
+//                    .replace(R.id.container, WiFiPasswordFragment.newInstance())
+//                    .addToBackStack(null)
+//                    .commit()
             }
 
             setFragmentResultListener(REQUEST_KEY_CREDENTIALS) { _, bundle ->

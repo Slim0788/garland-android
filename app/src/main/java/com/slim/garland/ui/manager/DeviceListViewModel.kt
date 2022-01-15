@@ -1,4 +1,4 @@
-package com.slim.garland.ui.device.devices
+package com.slim.garland.ui.manager
 
 import android.annotation.SuppressLint
 import android.app.Application

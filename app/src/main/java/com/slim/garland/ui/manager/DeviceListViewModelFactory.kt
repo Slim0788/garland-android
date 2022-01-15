@@ -1,4 +1,4 @@
-package com.slim.garland.ui.device.devices
+package com.slim.garland.ui.manager
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
