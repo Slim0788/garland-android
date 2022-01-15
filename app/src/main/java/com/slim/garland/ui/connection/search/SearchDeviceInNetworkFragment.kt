@@ -1,20 +1,24 @@
-package com.slim.garland.ui.connection.method
+package com.slim.garland.ui.connection.search
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.slim.garland.R
-import com.slim.garland.databinding.FragmentConnectionMethodBinding
+import com.slim.garland.databinding.FragmentSearchDeviceInNetworkBinding
 
-class ConnectionMethodFragment : Fragment(R.layout.fragment_connection_method) {
+class SearchDeviceInNetworkFragment : Fragment(R.layout.fragment_search_device_in_network) {
 
-    private var _binding: FragmentConnectionMethodBinding? = null
+    private val viewModel: SearchDeviceInNetworkViewModel by viewModels()
+
+    private var _binding: FragmentSearchDeviceInNetworkBinding? = null
     private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView(view)
         setListeners()
+        setObservables()
     }
 
     override fun onDestroy() {
@@ -23,7 +27,13 @@ class ConnectionMethodFragment : Fragment(R.layout.fragment_connection_method) {
     }
 
     private fun initView(view: View) {
-        _binding = FragmentConnectionMethodBinding.bind(view)
+        _binding = FragmentSearchDeviceInNetworkBinding.bind(view)
+    }
+
+    private fun setObservables() {
+        viewModel.apply {
+
+        }
     }
 
     private fun setListeners() {
@@ -31,15 +41,7 @@ class ConnectionMethodFragment : Fragment(R.layout.fragment_connection_method) {
             toolbar.setNavigationOnClickListener {
                 findNavController().popBackStack()
             }
-            btnWebSearch.setOnClickListener {
 
-            }
-            btnConnectDeviceToNetwork.setOnClickListener {
-                findNavController().navigate(R.id.action_connectionMethodFragment_to_deviceScannerFragment)
-            }
-            btnConnectToDevice.setOnClickListener {
-
-            }
         }
     }
 

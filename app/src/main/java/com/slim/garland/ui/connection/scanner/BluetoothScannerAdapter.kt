@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentDeviceScannerItemBinding
 
-class DeviceScannerAdapter : RecyclerView.Adapter<DeviceScannerAdapter.ViewHolder>() {
+class BluetoothScannerAdapter : RecyclerView.Adapter<BluetoothScannerAdapter.ViewHolder>() {
 
     private val items = mutableListOf<BluetoothDevice>()
 

@@ -7,15 +7,15 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentWifiPasswordBinding
-import com.slim.garland.ui.connection.control.DeviceControlFragment
-import com.slim.garland.ui.connection.wifi.WiFiScanningFragment
+import com.slim.garland.ui.connection.bluetooth.BluetoothConnectionFragment
 
-class WiFiPasswordFragment : Fragment(R.layout.fragment_wifi_password) {
+class WifiPasswordFragment : Fragment(R.layout.fragment_wifi_password) {
 
-    private val viewModel: WiFiPasswordViewModel by viewModels {
-        WiFiPasswordViewModelFactory()
+    private val viewModel: WifiPasswordViewModel by viewModels {
+        WifiPasswordViewModelFactory()
     }
 
     private var _binding: FragmentWifiPasswordBinding? = null
@@ -23,7 +23,7 @@ class WiFiPasswordFragment : Fragment(R.layout.fragment_wifi_password) {
 
 
     companion object {
-        fun newInstance() = WiFiPasswordFragment()
+        fun newInstance() = WifiPasswordFragment()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,26 +52,23 @@ class WiFiPasswordFragment : Fragment(R.layout.fragment_wifi_password) {
     private fun setListeners() {
         binding.apply {
             toolbar.setNavigationOnClickListener {
-                parentFragmentManager.popBackStack()
+                findNavController().popBackStack()
             }
             btnAnotherWifi.setOnClickListener {
-//                parentFragmentManager.beginTransaction()
-//                    .replace(R.id.container, WiFiScanningFragment.newInstance())
-//                    .addToBackStack(null)
-//                    .commit()
+                findNavController().navigate(R.id.action_wifiPasswordFragment_to_wifiScanningFragment)
             }
             btnWifiSettings.setOnClickListener {
                 startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
             }
             btnSubmitPassword.setOnClickListener {
                 setFragmentResult(
-                    DeviceControlFragment.REQUEST_KEY_CREDENTIALS,
-                    DeviceControlFragment.getBundleForResult(
+                    BluetoothConnectionFragment.REQUEST_KEY_CREDENTIALS,
+                    BluetoothConnectionFragment.getBundleForResult(
                         binding.textMessage.text.toString(),
                         etPassword.text.toString()
                     )
                 )
-                parentFragmentManager.popBackStack()
+                findNavController().popBackStack()
             }
         }
     }

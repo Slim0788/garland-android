@@ -15,7 +15,7 @@ import com.slim.garland.utils.SingleEventLiveData
 
 private const val FREQUENCY_LIMIT = 3000
 
-class WiFiScanningViewModel(
+class WifiScanningViewModel(
     application: Application,
     private val wifiManager: WifiManager
 ) : AndroidViewModel(application) {

@@ -5,11 +5,9 @@
     android:id="@+id/nav_graph"
     app:startDestination="@+id/deviceListFragment">
 
-    <include app:graph="@navigation/nav_connection" />
-
     <fragment
         android:id="@+id/deviceListFragment"
-        android:name="com.slim.garland.ui.manager.DeviceListFragment"
+        android:name="com.slim.garland.ui.device_list.DeviceListFragment"
         android:label="Devices"
         tools:layout="@layout/fragment_device_list">
         <action
@@ -24,7 +22,9 @@
     <fragment
         android:id="@+id/deviceFragment"
         android:name="com.slim.garland.ui.device.DeviceFragment"
-        tools:layout="@layout/fragment_device"
-        android:label="DeviceFragment" />
+        android:label="Devices"
+        tools:layout="@layout/fragment_device" />
+
+    <include app:graph="@navigation/nav_connection" />
 
 </navigation>

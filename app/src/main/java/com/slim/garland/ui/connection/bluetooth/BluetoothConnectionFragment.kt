@@ -1,22 +1,22 @@
-package com.slim.garland.ui.connection.control
+package com.slim.garland.ui.connection.bluetooth
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.slim.garland.R
-import com.slim.garland.databinding.FragmentDeviceControlBinding
-import com.slim.garland.ui.connection.password.WiFiPasswordFragment
+import com.slim.garland.databinding.FragmentBluetoothConnectionBinding
 
-class DeviceControlFragment : Fragment(R.layout.fragment_device_control) {
+class BluetoothConnectionFragment : Fragment(R.layout.fragment_bluetooth_connection) {
 
-    private val viewModel: DeviceControlViewModel by viewModels {
-        DeviceControlViewModelFactory(requireArguments().getString(ARG_DEVICE_ADDRESS) ?: "")
+    private val viewModel: BluetoothConnectionViewModel by viewModels {
+        BluetoothConnectionViewModelFactory(requireArguments().getString(ARG_DEVICE_ADDRESS) ?: "")
     }
 
-    private var _binding: FragmentDeviceControlBinding? = null
+    private var _binding: FragmentBluetoothConnectionBinding? = null
     private val binding get() = _binding!!
 
     companion object {
@@ -25,10 +25,8 @@ class DeviceControlFragment : Fragment(R.layout.fragment_device_control) {
         private const val ARG_REQUEST_SSID = "arg_request_ssid"
         private const val ARG_REQUEST_PASSWORD = "arg_request_password"
 
-        fun newInstance(deviceAddress: String) = DeviceControlFragment().apply {
-            arguments = Bundle().apply {
-                putString(ARG_DEVICE_ADDRESS, deviceAddress)
-            }
+        fun getBundle(deviceAddress: String) = Bundle().apply {
+            putString(ARG_DEVICE_ADDRESS, deviceAddress)
         }
 
         fun getBundleForResult(ssid: String, password: String) = Bundle().apply {
@@ -49,7 +47,7 @@ class DeviceControlFragment : Fragment(R.layout.fragment_device_control) {
     }
 
     private fun initView(view: View) {
-        _binding = FragmentDeviceControlBinding.bind(view)
+        _binding = FragmentBluetoothConnectionBinding.bind(view)
     }
 
     private fun setObservables() {
@@ -77,7 +75,7 @@ class DeviceControlFragment : Fragment(R.layout.fragment_device_control) {
     private fun setListeners() {
         binding.apply {
             toolbar.setNavigationOnClickListener {
-                parentFragmentManager.popBackStack()
+                findNavController().popBackStack()
             }
             btnConnect.setOnClickListener {
                 viewModel.connect()
@@ -89,10 +87,7 @@ class DeviceControlFragment : Fragment(R.layout.fragment_device_control) {
                 viewModel.sendCredentialsRequest()
             }
             btnWifiPassword.setOnClickListener {
-//                parentFragmentManager.beginTransaction()
-//                    .replace(R.id.container, WiFiPasswordFragment.newInstance())
-//                    .addToBackStack(null)
-//                    .commit()
+                findNavController().navigate(R.id.action_deviceControlFragment_to_wifiPasswordFragment)
             }
 
             setFragmentResultListener(REQUEST_KEY_CREDENTIALS) { _, bundle ->

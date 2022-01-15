@@ -1,4 +1,4 @@
-package com.slim.garland.ui.connection.control
+package com.slim.garland.ui.connection.bluetooth
 
 import android.bluetooth.BluetoothDevice
 import androidx.lifecycle.LiveData
@@ -13,7 +13,7 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
-class DeviceControlViewModel(
+class BluetoothConnectionViewModel(
     private val bleControlManager: BleControlManager,
     private val deviceAddress: String
 ) : ViewModel() {

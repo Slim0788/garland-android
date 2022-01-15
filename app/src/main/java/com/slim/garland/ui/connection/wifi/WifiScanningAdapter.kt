@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentWifiScanningItemBinding
 
-class WiFiScanningAdapter : RecyclerView.Adapter<WiFiScanningAdapter.ViewHolder>() {
+class WifiScanningAdapter : RecyclerView.Adapter<WifiScanningAdapter.ViewHolder>() {
 
     private val items = mutableListOf<ScanResult>()
 

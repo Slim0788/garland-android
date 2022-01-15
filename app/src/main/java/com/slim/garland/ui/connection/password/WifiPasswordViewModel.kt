@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class WiFiPasswordViewModel(private val wifiManager: WifiManager) : ViewModel() {
+class WifiPasswordViewModel(private val wifiManager: WifiManager) : ViewModel() {
 
     private val _ssidLiveData = MutableLiveData<String>()
     val ssidLiveData: LiveData<String> = _ssidLiveData

@@ -5,31 +5,37 @@
     android:id="@+id/nav_connection"
     app:startDestination="@id/connectionMethodFragment">
 
-    <fragment
+    <dialog
         android:id="@+id/connectionMethodFragment"
-        android:name="com.slim.garland.ui.connection.method.ConnectionMethodFragment"
+        android:name="com.slim.garland.ui.connection.method.ConnectionMethodBottomSheet"
         android:label="fragment_connection_method"
         tools:layout="@layout/fragment_connection_method">
         <action
-            android:id="@+id/action_connectionMethodFragment_to_deviceScannerFragment"
-            app:destination="@id/deviceScannerFragment" />
-    </fragment>
+            android:id="@+id/action_connectionMethodFragment_to_bluetoothScannerFragment"
+            app:destination="@id/bluetoothScannerFragment" />
+        <action
+            android:id="@+id/action_connectionMethodFragment_to_hotspotConnectionFragment"
+            app:destination="@id/hotspotConnectionFragment" />
+        <action
+            android:id="@+id/action_connectionMethodFragment_to_searchDeviceInNetworkFragment"
+            app:destination="@id/searchDeviceInNetworkFragment" />
+    </dialog>
 
     <fragment
-        android:id="@+id/deviceScannerFragment"
-        android:name="com.slim.garland.ui.connection.scanner.DeviceScannerFragment"
+        android:id="@+id/bluetoothScannerFragment"
+        android:name="com.slim.garland.ui.connection.scanner.BluetoothScannerFragment"
         android:label="fragment_wifi_password"
         tools:layout="@layout/fragment_device_scanner">
         <action
-            android:id="@+id/action_deviceScannerFragment_to_deviceBluetoothFragment"
-            app:destination="@id/deviceBluetoothFragment" />
+            android:id="@+id/action_deviceScannerFragment_to_bluetoothConnectionFragment"
+            app:destination="@id/bluetoothConnectionFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/deviceBluetoothFragment"
-        android:name="com.slim.garland.ui.connection.control.DeviceControlFragment"
+        android:id="@+id/bluetoothConnectionFragment"
+        android:name="com.slim.garland.ui.connection.bluetooth.BluetoothConnectionFragment"
         android:label="fragment_device_control"
-        tools:layout="@layout/fragment_device_control">
+        tools:layout="@layout/fragment_bluetooth_connection">
         <action
             android:id="@+id/action_deviceControlFragment_to_wifiPasswordFragment"
             app:destination="@id/wifiPasswordFragment" />
@@ -37,7 +43,7 @@
 
     <fragment
         android:id="@+id/wifiPasswordFragment"
-        android:name="com.slim.garland.ui.connection.password.WiFiPasswordFragment"
+        android:name="com.slim.garland.ui.connection.password.WifiPasswordFragment"
         android:label="fragment_wifi_password"
         tools:layout="@layout/fragment_wifi_password">
         <action
@@ -47,7 +53,19 @@
 
     <fragment
         android:id="@+id/wifiScanningFragment"
-        android:name="com.slim.garland.ui.connection.wifi.WiFiScanningFragment"
+        android:name="com.slim.garland.ui.connection.wifi.WifiScanningFragment"
         android:label="Wi-Fi Scanning"
         tools:layout="@layout/fragment_wifi_scanning" />
+
+    <fragment
+        android:id="@+id/hotspotConnectionFragment"
+        android:name="com.slim.garland.ui.connection.hotspot.HotspotConnectionFragment"
+        android:label="Hotspot Connection"
+        tools:layout="@layout/fragment_hotspot_connection" />
+
+    <fragment
+        android:id="@+id/searchDeviceInNetworkFragment"
+        android:name="com.slim.garland.ui.connection.search.SearchDeviceInNetworkFragment"
+        android:label="Search Device In Network"
+        tools:layout="@layout/fragment_search_device_in_network" />
 </navigation>

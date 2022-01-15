@@ -1,4 +1,4 @@
-package com.slim.garland.ui.manager
+package com.slim.garland.ui.device_list
 
 import android.os.Bundle
 import android.view.View

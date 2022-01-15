@@ -10,6 +10,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.divider.MaterialDividerItemDecoration
@@ -19,18 +20,14 @@ import com.slim.garland.databinding.FragmentWifiScanningBinding
 import com.slim.garland.utils.PermissionStatus
 import com.slim.garland.utils.requestPermissionLauncher
 
-class WiFiScanningFragment : Fragment(R.layout.fragment_wifi_scanning) {
+class WifiScanningFragment : Fragment(R.layout.fragment_wifi_scanning) {
 
-    private val viewModel: WiFiScanningViewModel by viewModels { WiFiScanningViewModelFactory() }
+    private val viewModel: WifiScanningViewModel by viewModels { WifiScanningViewModelFactory() }
 
     private var _binding: FragmentWifiScanningBinding? = null
     private val binding get() = _binding!!
 
-    private val wifiScanningAdapter = WiFiScanningAdapter()
-
-    companion object {
-        fun newInstance() = WiFiScanningFragment()
-    }
+    private val wifiScanningAdapter = WifiScanningAdapter()
 
     private val locationPermissionsLauncher by requestPermissionLauncher { status ->
         when (status) {
@@ -101,7 +98,7 @@ class WiFiScanningFragment : Fragment(R.layout.fragment_wifi_scanning) {
     private fun setListeners() {
         binding.apply {
             toolbar.setNavigationOnClickListener {
-                parentFragmentManager.popBackStack()
+                findNavController().popBackStack()
             }
         }
     }

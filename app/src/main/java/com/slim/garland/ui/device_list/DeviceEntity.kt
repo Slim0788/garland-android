@@ -1,4 +1,4 @@
-package com.slim.garland.ui.manager
+package com.slim.garland.ui.device_list
 
 data class DeviceEntity(
     val id: Long,

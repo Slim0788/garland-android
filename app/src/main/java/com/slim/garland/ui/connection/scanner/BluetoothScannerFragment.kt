@@ -18,29 +18,30 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentDeviceScannerBinding
-import com.slim.garland.ui.connection.control.DeviceControlFragment
+import com.slim.garland.ui.connection.bluetooth.BluetoothConnectionFragment
 import com.slim.garland.utils.PermissionStatus
 import com.slim.garland.utils.requestPermissionLauncher
 
-class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
+class BluetoothScannerFragment : Fragment(R.layout.fragment_device_scanner) {
 
     private val viewModel: DeviceScannerViewModel by viewModels {
-        DeviceScannerViewModelFactory()
+        BluetoothScannerViewModelFactory()
     }
 
     private var _binding: FragmentDeviceScannerBinding? = null
     private val binding get() = _binding!!
 
-    private val deviceScanAdapter = DeviceScannerAdapter()
+    private val deviceScanAdapter = BluetoothScannerAdapter()
 
     companion object {
-        fun newInstance() = DeviceScannerFragment()
+        fun newInstance() = BluetoothScannerFragment()
     }
 
     private val bluetoothPermissionsLauncher by requestPermissionLauncher { status ->
@@ -132,14 +133,14 @@ class DeviceScannerFragment : Fragment(R.layout.fragment_device_scanner) {
     private fun setListeners() {
         deviceScanAdapter.setOnItemClickListener {
             viewModel.stopScanning()
-//            parentFragmentManager.beginTransaction()
-//                .replace(R.id.container, DeviceControlFragment.newInstance(it.address))
-//                .addToBackStack(null)
-//                .commit()
+            findNavController().navigate(
+                R.id.action_deviceScannerFragment_to_bluetoothConnectionFragment,
+                BluetoothConnectionFragment.getBundle(it.address)
+            )
         }
         binding.apply {
             toolbar.setNavigationOnClickListener {
-                parentFragmentManager.popBackStack()
+                findNavController().popBackStack()
             }
             swipeRefresh.setOnRefreshListener {
                 swipeRefresh.isRefreshing = false

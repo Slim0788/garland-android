@@ -9,5 +9,5 @@
         android:id="@+id/deviceControlFragment"
         android:name="com.slim.garland.ui.device.control.DeviceControlFragment"
         android:label="Control"
-        tools:layout="@layout/fragment_device_control2" />
+        tools:layout="@layout/fragment_device_control" />
 </navigation>
