@@ -13,5 +13,12 @@ object SavedDevices {
         DeviceEntity(5, "Name 6"),
         DeviceEntity(6, "Name 7"),
         DeviceEntity(7, "Name 8"),
+        DeviceEntity(8, "Name 9"),
+        DeviceEntity(9, "Name 10"),
+        DeviceEntity(10, "Name 11"),
+        DeviceEntity(11, "Name 12"),
+        DeviceEntity(12, "Name 13"),
+        DeviceEntity(13, "Name 14"),
+        DeviceEntity(14, "Name 15"),
     )
 }

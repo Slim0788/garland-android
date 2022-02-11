@@ -5,6 +5,7 @@ import android.bluetooth.*
 import android.bluetooth.BluetoothProfile.STATE_CONNECTED
 import android.bluetooth.BluetoothProfile.STATE_DISCONNECTED
 import android.content.Context
+import android.os.ParcelUuid
 import androidx.lifecycle.MutableLiveData
 import com.slim.garland.utils.SingleEventLiveData
 import java.util.*
@@ -43,6 +44,9 @@ class BleControlManager(
     private var connectionResponseCharacteristic: BluetoothGattCharacteristic? = null
     private var workedTimeCharacteristic: BluetoothGattCharacteristic? = null
 
+    companion object {
+        fun getFilterServiceUuid() = ParcelUuid(SERVICE_CONNECTION_UUID)
+    }
 
     private var bleControlCallback: BleControlCallback? = null
 

@@ -15,8 +15,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.slim.garland.Convention.SERVICE_REGISTRATION_UUID
 import com.slim.garland.R
+import com.slim.garland.data.BleControlManager
 import com.slim.garland.utils.SingleEventLiveData
 import java.util.concurrent.TimeUnit
 
@@ -70,7 +70,7 @@ class DeviceScannerViewModel(
 
     private fun buildScanFilters(): List<ScanFilter>? {
         val scanFilter = ScanFilter.Builder()
-            .setServiceUuid(SERVICE_REGISTRATION_UUID)
+            .setServiceUuid(BleControlManager.getFilterServiceUuid())
             .build()
 //        return listOf(scanFilter)
         return null
