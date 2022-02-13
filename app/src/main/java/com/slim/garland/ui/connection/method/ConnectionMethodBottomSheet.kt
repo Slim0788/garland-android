@@ -43,6 +43,9 @@ class ConnectionMethodBottomSheet : BottomSheetDialogFragment() {
             btnHotspot.setOnClickListener {
                 findNavController().navigate(R.id.action_connectionMethodFragment_to_hotspotConnectionFragment)
             }
+            btnClose.setOnClickListener {
+                dismiss()
+            }
         }
     }
 
