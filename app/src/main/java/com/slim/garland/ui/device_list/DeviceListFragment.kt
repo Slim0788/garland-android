@@ -5,11 +5,13 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentDeviceListBinding
+import com.slim.garland.ui.RootActivity
 
 class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
 
@@ -24,6 +26,9 @@ class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
         initView(view)
         setListeners()
         setObservables()
+
+        val activityToolbar = (requireActivity() as RootActivity).toolbar
+        activityToolbar.setupWithNavController(findNavController())
     }
 
     override fun onDestroy() {
@@ -58,7 +63,7 @@ class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
 
     private fun setListeners() {
         binding.apply {
-            btnAddMore.setOnClickListener {
+            extendedFab.setOnClickListener {
                 findNavController().navigate(R.id.action_deviceListFragment_to_nav_connection)
             }
             deviceListAdapter.setOnItemClickListener {

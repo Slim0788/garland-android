@@ -16,13 +16,14 @@
 
         <action
             android:id="@+id/action_deviceListFragment_to_deviceFragment"
-            app:destination="@id/deviceFragment" />
+            app:destination="@id/deviceFragment"
+            app:enterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
     </fragment>
 
     <fragment
         android:id="@+id/deviceFragment"
         android:name="com.slim.garland.ui.device.DeviceFragment"
-        android:label="Devices"
         tools:layout="@layout/fragment_device" />
 
     <include app:graph="@navigation/nav_connection" />

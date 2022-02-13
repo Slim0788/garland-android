@@ -38,9 +38,9 @@ class HotspotConnectionFragment : Fragment(R.layout.fragment_hotspot_connection)
 
     private fun setListeners() {
         binding.apply {
-            toolbar.setNavigationOnClickListener {
-                findNavController().popBackStack()
-            }
+//            toolbar.setNavigationOnClickListener {
+//                findNavController().popBackStack()
+//            }
 
         }
     }

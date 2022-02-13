@@ -96,11 +96,11 @@ class WifiScanningFragment : Fragment(R.layout.fragment_wifi_scanning) {
     }
 
     private fun setListeners() {
-        binding.apply {
-            toolbar.setNavigationOnClickListener {
-                findNavController().popBackStack()
-            }
-        }
+//        binding.apply {
+//            toolbar.setNavigationOnClickListener {
+//                findNavController().popBackStack()
+//            }
+//        }
     }
 
     private fun startScan() {

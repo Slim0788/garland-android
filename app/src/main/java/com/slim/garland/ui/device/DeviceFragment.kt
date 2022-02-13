@@ -5,11 +5,13 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationBarView
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentDeviceBinding
+import com.slim.garland.ui.RootActivity
 
 class DeviceFragment : Fragment(R.layout.fragment_device) {
 
@@ -21,6 +23,7 @@ class DeviceFragment : Fragment(R.layout.fragment_device) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView(view)
+        initNavController()
     }
 
     override fun onDestroy() {
@@ -30,24 +33,39 @@ class DeviceFragment : Fragment(R.layout.fragment_device) {
 
     private fun initView(view: View) {
         _binding = FragmentDeviceBinding.bind(view)
+    }
 
+    private fun initNavController() {
         val localNavHostFragment =
             childFragmentManager.findFragmentById(R.id.local_nav_host_fragment) as NavHostFragment
         navController = localNavHostFragment.navController
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.deviceControlFragment,
-                R.id.deviceEffectsFragment,
-                R.id.deviceSettingsFragment
+                R.navigation.nav_device_control,
+                R.navigation.nav_device_effects,
+                R.navigation.nav_device_settings
             )
         )
 
-        NavigationUI.setupWithNavController(binding.requireNavigationView, navController)
-        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
+        val activityToolbar = (requireActivity() as RootActivity).toolbar
+        activityToolbar.setupWithNavController(navController, appBarConfiguration)
 
+        activityToolbar.setNavigationOnClickListener {
+            if (!navController.navigateUp())
+                findNavController().popBackStack()
+
+        }
+        binding.requireNavigationView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id == R.id.deviceControlFragment) {
+                activityToolbar.setNavigationIcon(R.drawable.ic_24_close)
+            }
+        }
     }
 
     private val FragmentDeviceBinding.requireNavigationView: NavigationBarView
         get() = navigationView as NavigationBarView
+
 }

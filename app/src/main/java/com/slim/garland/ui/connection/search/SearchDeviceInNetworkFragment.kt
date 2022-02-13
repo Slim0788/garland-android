@@ -38,9 +38,9 @@ class SearchDeviceInNetworkFragment : Fragment(R.layout.fragment_search_device_i
 
     private fun setListeners() {
         binding.apply {
-            toolbar.setNavigationOnClickListener {
-                findNavController().popBackStack()
-            }
+//            toolbar.setNavigationOnClickListener {
+//                findNavController().popBackStack()
+//            }
 
         }
     }

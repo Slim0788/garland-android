@@ -1,12 +1,12 @@
 package com.slim.garland;
 
-import com.slim.garland.ui.MainActivity;
-
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 public class UdpClient extends Thread {
+
+    private final byte direction = 100;
 
     int i = 0;
     byte[] data = {0};
@@ -28,9 +28,9 @@ public class UdpClient extends Thread {
     public void run() {
         while (true) {
 
-            byte temp = MainActivity.Companion.getDirection();
+            byte temp = direction;
 
-            String s = "" + MainActivity.Companion.getDirection();
+            String s = "" + direction;
             data = s.getBytes();
 
             if (temp != 100) {

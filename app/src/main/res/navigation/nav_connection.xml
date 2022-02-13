@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/bluetoothScannerFragment"
         android:name="com.slim.garland.ui.connection.scanner.BluetoothScannerFragment"
-        android:label="fragment_wifi_password"
+        android:label="@string/device_scanner_title"
         tools:layout="@layout/fragment_device_scanner">
         <action
             android:id="@+id/action_deviceScannerFragment_to_bluetoothConnectionFragment"
@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/bluetoothConnectionFragment"
         android:name="com.slim.garland.ui.connection.bluetooth.BluetoothConnectionFragment"
-        android:label="fragment_device_control"
+        android:label="Device control"
         tools:layout="@layout/fragment_bluetooth_connection">
         <action
             android:id="@+id/action_deviceControlFragment_to_wifiPasswordFragment"
@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/wifiPasswordFragment"
         android:name="com.slim.garland.ui.connection.password.WifiPasswordFragment"
-        android:label="fragment_wifi_password"
+        android:label="Wi-Fi Password"
         tools:layout="@layout/fragment_wifi_password">
         <action
             android:id="@+id/action_wifiPasswordFragment_to_wifiScanningFragment"
@@ -54,18 +54,18 @@
     <fragment
         android:id="@+id/wifiScanningFragment"
         android:name="com.slim.garland.ui.connection.wifi.WifiScanningFragment"
-        android:label="Wi-Fi Scanning"
+        android:label="@string/wifi_scanning_title"
         tools:layout="@layout/fragment_wifi_scanning" />
 
     <fragment
         android:id="@+id/hotspotConnectionFragment"
         android:name="com.slim.garland.ui.connection.hotspot.HotspotConnectionFragment"
-        android:label="Hotspot Connection"
+        android:label="Hotspot connection"
         tools:layout="@layout/fragment_hotspot_connection" />
 
     <fragment
         android:id="@+id/searchDeviceInNetworkFragment"
         android:name="com.slim.garland.ui.connection.search.SearchDeviceInNetworkFragment"
-        android:label="Search Device In Network"
+        android:label="Search device in network"
         tools:layout="@layout/fragment_search_device_in_network" />
 </navigation>

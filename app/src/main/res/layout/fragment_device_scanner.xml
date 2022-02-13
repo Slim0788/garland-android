@@ -6,31 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.connection.scanner.BluetoothScannerFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:navigationIcon="@drawable/ic_24_arrow_back"
-            app:title="@string/device_scanner_title"
-            app:titleCentered="true">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_stop_scanning"
-                style="@style/Widget.Material3.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="@string/device_scanner_stop_scanning"
-                android:visibility="gone"
-                tools:visibility="visible" />
-        </com.google.android.material.appbar.MaterialToolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
@@ -45,6 +20,16 @@
             tools:itemCount="5"
             tools:listitem="@layout/fragment_device_scanner_item" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_stop_scanning"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="@string/device_scanner_stop_scanning"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progress"
