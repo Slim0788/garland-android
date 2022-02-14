@@ -27,6 +27,7 @@ import com.slim.garland.R
 import com.slim.garland.databinding.FragmentDeviceScannerBinding
 import com.slim.garland.ui.connection.bluetooth.BluetoothConnectionFragment
 import com.slim.garland.utils.PermissionStatus
+import com.slim.garland.utils.ResUtils
 import com.slim.garland.utils.requestPermissionLauncher
 
 class BluetoothScannerFragment : Fragment(R.layout.fragment_device_scanner) {
@@ -97,7 +98,9 @@ class BluetoothScannerFragment : Fragment(R.layout.fragment_device_scanner) {
             adapter = deviceScanAdapter
             addItemDecoration(
                 MaterialDividerItemDecoration(requireContext(), RecyclerView.VERTICAL).also {
-                    it.dividerInsetStart = 64
+                    it.dividerInsetStart = ResUtils.dpToPixel(32).toInt()
+                    it.dividerInsetEnd = ResUtils.dpToPixel(32).toInt()
+                    it.isLastItemDecorated = false
                 })
         }
     }

@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentWifiScanningBinding
 import com.slim.garland.utils.PermissionStatus
+import com.slim.garland.utils.ResUtils
 import com.slim.garland.utils.requestPermissionLauncher
 
 class WifiScanningFragment : Fragment(R.layout.fragment_wifi_scanning) {
@@ -71,7 +72,9 @@ class WifiScanningFragment : Fragment(R.layout.fragment_wifi_scanning) {
             adapter = wifiScanningAdapter
             addItemDecoration(
                 MaterialDividerItemDecoration(requireContext(), RecyclerView.VERTICAL).also {
-                    it.dividerInsetStart = 64
+                    it.dividerInsetStart = ResUtils.dpToPixel(32).toInt()
+                    it.dividerInsetEnd = ResUtils.dpToPixel(32).toInt()
+                    it.isLastItemDecorated = false
                 })
         }
     }
