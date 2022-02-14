@@ -139,9 +139,6 @@ class BluetoothScannerFragment : Fragment(R.layout.fragment_device_scanner) {
             )
         }
         binding.apply {
-//            toolbar.setNavigationOnClickListener {
-//                findNavController().popBackStack()
-//            }
             swipeRefresh.setOnRefreshListener {
                 swipeRefresh.isRefreshing = false
                 startScan()

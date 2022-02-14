@@ -74,9 +74,6 @@ class BluetoothConnectionFragment : Fragment(R.layout.fragment_bluetooth_connect
 
     private fun setListeners() {
         binding.apply {
-            toolbar.setNavigationOnClickListener {
-                findNavController().popBackStack()
-            }
             btnConnect.setOnClickListener {
                 viewModel.connect()
             }

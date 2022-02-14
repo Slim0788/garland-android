@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentDeviceListBinding
 import com.slim.garland.ui.RootActivity
+import com.slim.garland.utils.ResUtils
 
 class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
 
@@ -43,7 +44,9 @@ class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
             adapter = deviceListAdapter
             addItemDecoration(
                 MaterialDividerItemDecoration(requireContext(), RecyclerView.VERTICAL).also {
-                    it.dividerInsetStart = 64
+                    it.dividerInsetStart = ResUtils.dpToPixel(32).toInt()
+                    it.dividerInsetEnd = ResUtils.dpToPixel(32).toInt()
+                    it.isLastItemDecorated = false
                 })
         }
     }

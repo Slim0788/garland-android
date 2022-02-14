@@ -51,9 +51,6 @@ class WifiPasswordFragment : Fragment(R.layout.fragment_wifi_password) {
 
     private fun setListeners() {
         binding.apply {
-            toolbar.setNavigationOnClickListener {
-                findNavController().popBackStack()
-            }
             btnAnotherWifi.setOnClickListener {
                 findNavController().navigate(R.id.action_wifiPasswordFragment_to_wifiScanningFragment)
             }

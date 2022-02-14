@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.connection.bluetooth.BluetoothConnectionFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_24_arrow_back"
-            app:title="Device control"
-            app:titleCentered="true" />
-    </com.google.android.material.appbar.AppBarLayout>
-
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progress"
         android:layout_width="match_parent"
@@ -70,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:textSize="30sp"
         tools:text="00:00:00" />
