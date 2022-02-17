@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentConnectionMethodBinding
@@ -13,6 +14,14 @@ class ConnectionMethodBottomSheet : BottomSheetDialogFragment() {
 
     private var _binding: FragmentConnectionMethodBinding? = null
     private val binding get() = _binding!!
+
+//    override fun onStart() {
+//        super.onStart()
+//        //this forces the sheet to appear at max height even on landscape
+//         BottomSheetBehavior.from(requireView().parent as View).also {
+//             it.state = BottomSheetBehavior.STATE_EXPANDED
+//         }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

@@ -30,7 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:contentDescription="Add more"
         android:text="Add more"
         app:icon="@drawable/ic_24_add" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

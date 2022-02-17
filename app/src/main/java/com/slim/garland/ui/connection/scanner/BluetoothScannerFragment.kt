@@ -41,10 +41,6 @@ class BluetoothScannerFragment : Fragment(R.layout.fragment_device_scanner) {
 
     private val deviceScanAdapter = BluetoothScannerAdapter()
 
-    companion object {
-        fun newInstance() = BluetoothScannerFragment()
-    }
-
     private val bluetoothPermissionsLauncher by requestPermissionLauncher { status ->
         when (status) {
             PermissionStatus.Granted -> {

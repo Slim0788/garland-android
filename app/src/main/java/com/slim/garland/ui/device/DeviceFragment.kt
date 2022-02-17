@@ -54,13 +54,13 @@ class DeviceFragment : Fragment(R.layout.fragment_device) {
         activityToolbar.setNavigationOnClickListener {
             if (!navController.navigateUp())
                 findNavController().popBackStack()
-
         }
         binding.requireNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.deviceControlFragment) {
+            if (destination.id == R.id.deviceControlFragment) {
                 activityToolbar.setNavigationIcon(R.drawable.ic_24_close)
+                activityToolbar.navigationContentDescription = getString(R.string.close)
             }
         }
     }

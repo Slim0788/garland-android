@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Garland</string>
 
+    <!--  COMMON STRINGS  -->
+    <string name="close">Close</string>
+
     <!--  DEVICE SCANNER FRAGMENT  -->
     <string name="device_scanner_title">Device scanner</string>
     <string name="device_scanner_settings">Settings</string>
