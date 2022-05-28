@@ -21,9 +21,10 @@ class BluetoothConnectionFragment : Fragment(R.layout.fragment_bluetooth_connect
 
     companion object {
         private const val ARG_DEVICE_ADDRESS = "arg_device_address"
-        const val REQUEST_KEY_CREDENTIALS = "request_key_password"
         private const val ARG_REQUEST_SSID = "arg_request_ssid"
         private const val ARG_REQUEST_PASSWORD = "arg_request_password"
+
+        const val REQUEST_KEY_CREDENTIALS = "request_key_password"
 
         fun getBundle(deviceAddress: String) = Bundle().apply {
             putString(ARG_DEVICE_ADDRESS, deviceAddress)

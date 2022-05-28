@@ -22,10 +22,6 @@ class WifiPasswordFragment : Fragment(R.layout.fragment_wifi_password) {
     private val binding get() = _binding!!
 
 
-    companion object {
-        fun newInstance() = WifiPasswordFragment()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView(view)
         setListeners()

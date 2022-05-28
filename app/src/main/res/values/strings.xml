@@ -10,7 +10,7 @@
     <string name="device_scanner_unnamed">- unnamed -</string>
     <string name="device_scanner_stop_scanning">Stop scanning</string>
     <string name="device_scanner_no_permission_device_name">No permission for device name</string>
-    <string name="device_scanner_bt_scanning">already scanning</string>
+    <string name="device_scanner_bt_scanning">Already scanning</string>
     <string name="device_scanner_bluetooth_dialog_title">Bluetooth warning</string>
     <string name="device_scanner_bluetooth_dialog_message">Bluetooth is not supported on this device.</string>
     <string name="device_scanner_bluetooth_permission_dialog_title">Location permission required</string>
