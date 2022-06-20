@@ -11,7 +11,6 @@ import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentDeviceListBinding
-import com.slim.garland.ui.RootActivity
 import com.slim.garland.utils.ResUtils
 
 class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
@@ -27,9 +26,6 @@ class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
         initView(view)
         setListeners()
         setObservables()
-
-        val activityToolbar = (requireActivity() as RootActivity).toolbar
-        activityToolbar.setupWithNavController(findNavController())
     }
 
     override fun onDestroy() {
@@ -40,15 +36,20 @@ class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
     private fun initView(view: View) {
         _binding = FragmentDeviceListBinding.bind(view)
 
-        binding.recyclerView.apply {
-            adapter = deviceListAdapter
-            addItemDecoration(
-                MaterialDividerItemDecoration(requireContext(), RecyclerView.VERTICAL).also {
-                    it.dividerInsetStart = ResUtils.dpToPixel(32).toInt()
-                    it.dividerInsetEnd = ResUtils.dpToPixel(32).toInt()
-                    it.isLastItemDecorated = false
-                })
+        binding.apply {
+            toolbar.setupWithNavController(findNavController())
+
+            recyclerView.apply {
+                adapter = deviceListAdapter
+                addItemDecoration(
+                    MaterialDividerItemDecoration(requireContext(), RecyclerView.VERTICAL).also {
+                        it.dividerInsetStart = ResUtils.dpToPixel(32).toInt()
+                        it.dividerInsetEnd = ResUtils.dpToPixel(32).toInt()
+                        it.isLastItemDecorated = false
+                    })
+            }
         }
+
     }
 
     private fun setObservables() {
@@ -67,7 +68,7 @@ class DeviceListFragment : Fragment(R.layout.fragment_device_list) {
     private fun setListeners() {
         binding.apply {
             extendedFab.setOnClickListener {
-                findNavController().navigate(R.id.action_deviceListFragment_to_nav_connection)
+                findNavController().navigate(R.id.action_deviceListFragment_to_connectionFragment2)
             }
             deviceListAdapter.setOnItemClickListener {
                 findNavController().navigate(R.id.action_deviceListFragment_to_deviceFragment)

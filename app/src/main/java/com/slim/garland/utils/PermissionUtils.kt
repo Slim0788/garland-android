@@ -49,7 +49,7 @@ class PermissionResultDelegate(
                     fragment.apply {
                         permissionResult = registerForActivityResult(
                             ActivityResultContracts.RequestMultiplePermissions()
-                        ) { permissions -> checkPermissions(permissions) }
+                        ) { permissions -> checkPermissions(permissions.toMutableMap()) }
                     }
                 } else if (event == Lifecycle.Event.ON_DESTROY) {
                     fragment.lifecycle.removeObserver(this)

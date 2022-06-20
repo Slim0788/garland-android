@@ -11,7 +11,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationBarView
 import com.slim.garland.R
 import com.slim.garland.databinding.FragmentDeviceBinding
-import com.slim.garland.ui.RootActivity
 
 class DeviceFragment : Fragment(R.layout.fragment_device) {
 
@@ -48,19 +47,22 @@ class DeviceFragment : Fragment(R.layout.fragment_device) {
             )
         )
 
-        val activityToolbar = (requireActivity() as RootActivity).toolbar
-        activityToolbar.setupWithNavController(navController, appBarConfiguration)
-
-        activityToolbar.setNavigationOnClickListener {
-            if (!navController.navigateUp())
-                findNavController().popBackStack()
+        binding.toolbar.apply {
+            setupWithNavController(navController, appBarConfiguration)
+            setNavigationOnClickListener {
+                if (!navController.navigateUp())
+                    findNavController().popBackStack()
+            }
         }
+
         binding.requireNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.deviceControlFragment) {
-                activityToolbar.setNavigationIcon(R.drawable.ic_24_close)
-                activityToolbar.navigationContentDescription = getString(R.string.close)
+                binding.toolbar.apply {
+                    setNavigationIcon(R.drawable.ic_24_close)
+                    navigationContentDescription = getString(R.string.close)
+                }
             }
         }
     }
