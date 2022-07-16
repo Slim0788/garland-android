@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.slim.garland"
 
         minSdk 26
-        targetSdk 32
+        targetSdk 33
 
         versionCode 1
         versionName "1.0"
@@ -31,28 +31,28 @@ android {
 dependencies {
 
     // MDC
-    implementation 'com.google.android.material:material:1.7.0-alpha02'
+    implementation 'com.google.android.material:material:1.7.0-alpha03'
 
     // Coroutines
-    def coroutines = '1.6.2'
+    def coroutines = '1.6.4'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
     // AndroidX
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'androidx.fragment:fragment-ktx:1.5.0-rc01'
+    implementation 'androidx.fragment:fragment-ktx:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     // Lifecycle
-    def lifecycle = '2.5.0-rc02'
+    def lifecycle = '2.5.0'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
 
     // Navigation
-    def navigation = "2.5.0-rc02"
+    def navigation = "2.5.0"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation"
 

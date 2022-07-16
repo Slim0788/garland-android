@@ -2,6 +2,7 @@ package com.slim.garland.ui.device
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -32,6 +33,7 @@ class DeviceFragment : Fragment(R.layout.fragment_device) {
 
     private fun initView(view: View) {
         _binding = FragmentDeviceBinding.bind(view)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
     }
 
     private fun initNavController() {
