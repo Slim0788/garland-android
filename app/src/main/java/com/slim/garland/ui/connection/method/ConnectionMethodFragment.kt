@@ -37,6 +37,9 @@ class ConnectionMethodFragment : Fragment(R.layout.fragment_connection_method) {
             btnHotspot.setOnClickListener {
                 findNavController().navigate(R.id.action_connectionMethodFragment_to_nav_connection_directly)
             }
+            btnSmartConfig.setOnClickListener {
+                findNavController().navigate(R.id.action_connectionMethodFragment_to_nav_connection_smart_config)
+            }
         }
     }
 

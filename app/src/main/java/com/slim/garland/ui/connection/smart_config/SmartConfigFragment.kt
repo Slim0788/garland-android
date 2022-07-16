@@ -1,4 +1,4 @@
-package com.slim.garland.ui.device.effects
+package com.slim.garland.ui.connection.smart_config
 
 import android.os.Bundle
 import android.view.Menu
@@ -11,13 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import com.slim.garland.R
-import com.slim.garland.databinding.FragmentDeviceEffectsBinding
+import com.slim.garland.databinding.FragmentSmartConfigBinding
 
-class DeviceEffectsFragment : Fragment(R.layout.fragment_device_effects) {
+class SmartConfigFragment : Fragment(R.layout.fragment_smart_config) {
 
-    private val viewModel: DeviceEffectsViewModel by viewModels()
+    private val viewModel: SmartConfigViewModel by viewModels()
 
-    private var _binding: FragmentDeviceEffectsBinding? = null
+    private var _binding: FragmentSmartConfigBinding? = null
     private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ class DeviceEffectsFragment : Fragment(R.layout.fragment_device_effects) {
     }
 
     private fun initView(view: View) {
-        _binding = FragmentDeviceEffectsBinding.bind(view)
+        _binding = FragmentSmartConfigBinding.bind(view)
     }
 
     private fun initToolbarMenu() {

@@ -20,6 +20,11 @@ class DeviceSettingsFragment : Fragment(R.layout.fragment_device_settings) {
         setObservables()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun initView(view: View) {
         _binding = FragmentDeviceSettingsBinding.bind(view)
     }

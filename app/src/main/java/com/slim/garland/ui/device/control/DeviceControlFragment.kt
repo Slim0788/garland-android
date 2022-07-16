@@ -20,6 +20,11 @@ class DeviceControlFragment : Fragment(R.layout.fragment_device_control) {
         setObservables()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun initView(view: View) {
         _binding = FragmentDeviceControlBinding.bind(view)
     }
