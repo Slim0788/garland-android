@@ -62,6 +62,6 @@ dependencies {
     kapt "androidx.room:room-compiler:$room"
 
     // ESP Touch
-//    implementation 'com.github.EspressifApp:lib-esptouch-android:1.0.0'
+    implementation 'com.github.EspressifApp:lib-esptouch-android:1.0.0'
 
 }

@@ -94,7 +94,7 @@ class DeviceScannerViewModel(
         ) {
             return
         }
-        _scanProgress.value = true
+        _scanProgress.postValue(true)
         handler.postDelayed({ stopScanning() }, SCAN_PERIOD_IN_MILLIS)
         bluetoothLeScanner?.startScan(buildScanFilters(), buildScanSettings(), scanCallback)
 
