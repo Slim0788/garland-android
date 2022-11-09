@@ -14,7 +14,7 @@ import kotlin.reflect.KProperty
  * Для запроса нам надо зарегистрировать requestPermissionLauncher и вызвать
  * requestPermissionLauncher.launch(Manifest.permission.REQUESTED_PERMISSION) с нужным разрешением.
  * В итоге получаем:
- *
+ *```
  *  private val permissionsLauncher by requestPermissionLauncher { status ->
  *      when(status) {
  *          PermissionStatus.Granted -> { ... }
@@ -28,9 +28,8 @@ import kotlin.reflect.KProperty
  *          permissionsLauncher.launch(arrayOf(Manifest.permission.CAMERA))
  *      }
  *  }
- *
+ *```
  */
-
 fun Fragment.requestPermissionLauncher(
     listener: (PermissionStatus) -> Unit
 ): ReadOnlyProperty<Fragment, ActivityResultLauncher<Array<String>>> =

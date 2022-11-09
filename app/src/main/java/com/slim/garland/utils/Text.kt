@@ -5,8 +5,9 @@ import androidx.annotation.StringRes
 
 /**
  * in Activity/Fragment/View:
- *
+ *```
  * val string = text.resolve(context)
+ * ```
  */
 sealed class Text {
 
